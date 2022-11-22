@@ -1,0 +1,13 @@
+<div class="weather-card">
+  <img [src]="city.image" alt="">
+  <div class="shader"></div>
+  <span class="weather-type">
+    <ion-icon name="partly-sunny-outline"></ion-icon> {{ city.weatherType }}
+  </span>
+  <span class="weather-temperature">
+    {{ city.temperature }}
+  </span>
+  <span class="weather-city-name">
+    <ion-icon name="pin-outline"></ion-icon> {{ city.name }}
+  </span>
+</div>
