@@ -4,6 +4,16 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Weather</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearch()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="searchShown">
+    <ion-input click="citySearch()" class="search-bar" placeholder="Search city">
+      
+    </ion-input>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">

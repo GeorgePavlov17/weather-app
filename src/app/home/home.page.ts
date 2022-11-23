@@ -9,6 +9,7 @@ import { City } from '../types/City';
 export class HomePage implements OnInit {
 
   public cities: City[] = [];
+  public searchShown: boolean = false;
 
   constructor() {}
 
@@ -17,5 +18,13 @@ export class HomePage implements OnInit {
       <City>{name: 'London', weatherType: 'Cloudy', temperature: 3, image: 'https://cdn.londonandpartners.com/-/media/images/london/visit/campaigns/international-recovery-campaign/lets-do-london-related-international-640.jpeg?mw=640&hash=477E6FF9F31F292EE017E5BA63027C7054EB39A0'},
       <City>{name: 'Sofia', weatherType: 'Sunny', temperature: 6, image: 'https://www.transfertaxi.net/wp-content/uploads/2019/05/sofia-airport-to-city-center.jpg'}
     );
+  }
+
+  toggleSearch() {
+    this.searchShown = !this.searchShown;
+  }
+
+  citySearch() {
+    
   }
 }
