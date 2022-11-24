@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { WeatherService } from '../services/weather.service';
 import { City } from '../types/City';
 
 @Component({
@@ -12,7 +13,7 @@ export class HomePage implements OnInit, OnDestroy {
   public citiesToShow: City[] = [];
   public searchShown: boolean = false;
 
-  constructor() {}
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
     this.cities.push(
@@ -21,6 +22,9 @@ export class HomePage implements OnInit, OnDestroy {
       <City>{name: 'Paris', weatherType: 'Sunny', temperature: 7, image: 'https://viatravelers.com/wp-content/uploads/2020/12/parisatnight.jpeg'}
     );
     this.citiesToShow = this.cities;
+    this.weatherService.getCityData('Sofia').then((result) => {
+      console.log(result);
+    });
   }
 
   ngOnDestroy() {

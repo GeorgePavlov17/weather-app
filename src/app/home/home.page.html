@@ -6,14 +6,12 @@
     <ion-title>Weather</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="toggleSearch()">
-        <ion-icon name="search-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar *ngIf="searchShown">
-    <ion-input (ionChange)="searchTowns($event)" class="search-bar" placeholder="Search city">
-
-    </ion-input>
+  <ion-toolbar style="display: block;" *ngIf="searchShown">
+    <input class="search-bar" placeholder="Search city..." (keyup)="searchTowns($event)" type="text">
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
@@ -21,11 +19,6 @@
     <ion-menu contentId="main-content">
       <ion-content class="ion-padding">
         <ion-list>
-            <ion-item [routerLink]="['/home']">
-              <ion-label>
-                Home
-              </ion-label>
-            </ion-item>
             <ion-item [routerLink]="['/home']">
               <ion-label>
                 Today's forecast
@@ -50,9 +43,3 @@
     </ion-content>
   </ion-split-pane>
 </ion-content>
-
-<!-- <ion-card>
-  <ion-card-header>day time</ion-card-header>
-  <h3>temperature</h3>
-  <ion-card-subtitle>City name</ion-card-subtitle>
-</ion-card> -->
