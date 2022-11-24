@@ -1,11 +1,12 @@
 <div class="weather-card">
-  <img [src]="city.image" alt="">
+  <img class="backdrop" [src]="city.image" alt="">
   <div class="shader"></div>
   <span class="weather-type">
-    <ion-icon name="partly-sunny-outline"></ion-icon> {{ city.weatherType }}
+    <img style="vertical-align: middle;" [src]="weatherTypeIcon(city.weatherIcon)" alt="">
+    {{ city.weatherType }}
   </span>
   <span class="weather-temperature">
-    {{ city.temperature }}
+    {{ city.temperature | number: '1.0-0' }} °C
   </span>
   <span class="weather-city-name">
     <ion-icon name="pin-outline"></ion-icon> {{ city.name }}

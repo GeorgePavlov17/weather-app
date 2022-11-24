@@ -11,7 +11,10 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar style="display: block;" *ngIf="searchShown">
-    <input class="search-bar" placeholder="Search city..." (keyup)="searchTowns($event)" type="text">
+    <div style="display: flex;">
+      <input #searchBox class="search-bar" placeholder="Type city..." type="text">
+      <ion-button  (click)="searchTowns()" color="success">Search</ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">

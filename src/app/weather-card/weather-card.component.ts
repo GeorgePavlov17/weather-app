@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WeatherService } from '../services/weather.service';
 import { City } from '../types/City';
 
 @Component({
@@ -10,10 +11,15 @@ export class WeatherCardComponent implements OnInit {
 
   @Input() public city!: City;
 
-  constructor() { }
+  constructor(
+    private weatherService: WeatherService
+  ) { }
 
   ngOnInit() {
     
   }
 
+  weatherTypeIcon(icon: string) {
+    return `${this.weatherService.WEATHER_TYPE_ICON_URL}${icon}.png`;
+  }
 }
