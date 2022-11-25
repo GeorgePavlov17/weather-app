@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
 import { City } from '../types/City';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,10 @@ export class HomePage implements OnInit, OnDestroy {
   public citiesToShow: City[] = [];
   public searchShown: boolean = false;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(
+    private weatherService: WeatherService, 
+    private toastController: ToastController
+  ) {}
 
   ngOnInit() {
     this.weatherService.getCityData('Sofia').then((result) => {
@@ -27,7 +31,7 @@ export class HomePage implements OnInit, OnDestroy {
       }
       this.cities.push(city);
     }, (error) => {
-
+      this.presentToast();
     });
 
     this.weatherService.getCityData('London').then((result) => {
@@ -72,6 +76,8 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   searchTowns() {
+    this.presentToast();
+    return;
     const name = this.searchBox.nativeElement.value;
 
     if (name !== '' && name.length >= 3) {
@@ -87,11 +93,22 @@ export class HomePage implements OnInit, OnDestroy {
         }
         this.citiesToShow.push(city);
       }, (error) => {
-
+        this.presentToast();
       });
       
     } else {
       this.citiesToShow = this.cities;
     }
+  }
+
+  async presentToast() {
+    let toast = await this.toastController.create({
+      message: 'Location not found!',
+      duration: 2000,
+      position: 'top',
+      cssClass: 'toastClass'
+    });
+
+    await toast.present();
   }
 }

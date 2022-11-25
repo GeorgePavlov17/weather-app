@@ -24,3 +24,10 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.toastClass {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --color: white;
+    --background: #960000;
+    top: 12%;
+  }
