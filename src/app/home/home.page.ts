@@ -18,7 +18,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.weatherService.getCityData('Sofia').then((result) => {
-      console.log(result);
       const city: City = {
         name: result.name,
         weatherType: result.weather[0].main,
