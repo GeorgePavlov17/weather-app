@@ -12,7 +12,7 @@
   </ion-toolbar>
   <ion-toolbar style="display: block;" *ngIf="searchShown">
     <div style="display: flex;">
-      <input #searchBox class="search-bar" placeholder="Type city..." type="text">
+      <input (keyup)="backToHome()" #searchBox class="search-bar" placeholder="Type city..." type="text">
       <ion-button  (click)="searchTowns()" color="success">Search</ion-button>
     </div>
   </ion-toolbar>
@@ -42,7 +42,15 @@
     </ion-menu>
     
     <ion-content id="main-content">
-      <app-weather-card *ngFor="let city of citiesToShow" [city]="city"></app-weather-card>
+      <ng-container *ngIf="!loading; else loader">
+        <app-weather-card *ngFor="let city of citiesToShow" [city]="city"></app-weather-card>
+      </ng-container>
     </ion-content>
   </ion-split-pane>
 </ion-content>
+
+<ng-template #loader>
+  <div class="loading-spinner">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ng-template>

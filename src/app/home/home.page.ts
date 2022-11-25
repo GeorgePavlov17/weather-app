@@ -14,11 +14,12 @@ export class HomePage implements OnInit, OnDestroy {
   public cities: City[] = [];
   public citiesToShow: City[] = [];
   public searchShown: boolean = false;
+  public loading: boolean = false;
 
   constructor(
-    private weatherService: WeatherService, 
+    private weatherService: WeatherService,
     private toastController: ToastController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.weatherService.getCityData('Sofia').then((result) => {
@@ -35,7 +36,7 @@ export class HomePage implements OnInit, OnDestroy {
     });
 
     this.weatherService.getCityData('London').then((result) => {
-     
+
       const city: City = {
         name: result.name,
         weatherType: result.weather[0].main,
@@ -76,27 +77,39 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   searchTowns() {
-    const name = this.searchBox.nativeElement.value;
+    this.loading = true;
 
-    if (name !== '' && name.length >= 3) {
-      this.citiesToShow = [];
+    setTimeout(() => {
+      const name = this.searchBox.nativeElement.value;
 
-      this.weatherService.getCityData(name).then((result) => {
-        const city: City = {
-          name: result.name,
-          weatherType: result.weather[0].main,
-          weatherIcon: result.weather[0].icon,
-          temperature: result.main.temp,
-          image: 'https://wallpapercave.com/wp/WSjKlp7.jpg'
-        }
-        this.citiesToShow.push(city);
-      }, (error) => {
-        this.presentToast();
-      });
-      
-    } else {
-      this.citiesToShow = this.cities;
-    }
+      if (!name) {
+        this.citiesToShow = this.cities;
+        this.loading = false;
+      }
+
+      if (name !== '' && name.length >= 3) {
+        this.citiesToShow = [];
+
+        this.weatherService.getCityData(name).then((result) => {
+          const city: City = {
+            name: result.name,
+            weatherType: result.weather[0].main,
+            weatherIcon: result.weather[0].icon,
+            temperature: result.main.temp,
+            image: 'https://wallpapercave.com/wp/WSjKlp7.jpg'
+          }
+          this.citiesToShow.push(city);
+          this.loading = false;
+        }, (error) => {
+          this.presentToast();
+          this.loading = false;
+        });
+
+      } else {
+        this.citiesToShow = this.cities;
+        this.loading = false;
+      }
+    }, 1000);
   }
 
   async presentToast() {
@@ -107,5 +120,18 @@ export class HomePage implements OnInit, OnDestroy {
       cssClass: 'toastClass'
     });
     await toast.present();
+  }
+
+  backToHome() {
+    const name = this.searchBox.nativeElement.value;
+
+    if (!name) {
+      this.loading = true;
+
+      setTimeout(() => {
+        this.citiesToShow = this.cities;
+        this.loading = false;
+      }, 500);
+    }
   }
 }
