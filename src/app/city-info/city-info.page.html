@@ -31,26 +31,26 @@
       </div>
       <ion-row>
         <ion-col class="ion-no-padding">
-          <ion-card>
+          <ion-card color="tertiary">
             Feels like {{ this.currentCity?.feelsLike | number: '1.0-0' }}
             <b>°C</b>
           </ion-card>
         </ion-col>
         <ion-col class="ion-no-padding">
-          <ion-card>
+          <ion-card color="tertiary">
             <i class="mdi mdi-weather-windy"></i> {{ this.currentCity?.wind | number: '1.0-0' }} m/s
           </ion-card>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-no-padding">
-          <ion-card>
+          <ion-card color="tertiary">
             <i class="mdi mdi-thermometer-low"></i> {{ this.currentCity?.minTemp | number: '1.0-0' }}
             <b>°C</b>
           </ion-card>
         </ion-col>
         <ion-col class="ion-no-padding">
-          <ion-card>
+          <ion-card color="tertiary">
             <i class="mdi mdi-thermometer-high"></i> {{ this.currentCity?.maxTemp | number: '1.0-0' }}
             <b>°C</b>
           </ion-card>
