@@ -1,0 +1,83 @@
+.city-info {
+    background: linear-gradient(rgb(33, 32, 32), rgb(89, 86, 86));
+    position: relative;
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+    height: 100%;
+
+    img.backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        min-height: 100%;
+        min-width: 100%;
+    }
+
+    .title {
+        justify-content: center;
+        display: flex;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .weather-type {
+        justify-content: center;
+        display: flex;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .weather-type-icon {
+        justify-content: center;
+        display: flex;
+        margin-top: 30px;
+    }
+
+    .city-temp {
+        justify-content: center;
+        display: flex;
+        font-weight: bold;
+        font-size: 72px;
+        margin-top: 15px;
+    }
+
+    .summary-title {
+        padding-left: 15px;
+        display: block;
+        width: 100%;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .info-cards {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 40px;
+
+        ion-card {
+            padding: 8px;
+            margin: 8px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            line-height: 56px;
+            height: 72px;
+            font-size: 18px;
+        }
+    }
+
+    i {
+        font-size: 22px;
+    }
+}
+
+.city-title {
+    font-weight: bold;
+    font-size: 22px;
+}

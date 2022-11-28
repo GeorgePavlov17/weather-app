@@ -3,21 +3,59 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>
-      {{ this.currentCity?.name }} - 
-      {{ this.currentCity?.country }}
+    <ion-title class="city-title">
+      Daily forecast
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
   <div class="city-info" *ngIf="loaded">
-    <img [src]="this.currentCity?.image" alt="">
-    <ion-row>
-
+    <div class="title">
+      {{ this.currentCity?.name }} -
+      {{ this.currentCity?.country }}
+    </div>
+    <img *ngIf="this.currentCity?.image !== ''" class="backdrop" [src]="this.currentCity?.image" alt="">
+    <div class="weather-type">
       {{ this.currentCity?.weatherType }}
+    </div>
+    <div class="weather-type-icon">
       <img style="vertical-align: middle;" [src]="weatherTypeIcon(this.currentCity?.weatherIcon)" alt="">
-      <!-- {{ this.currentCity.weatherIcon }} -->
-    </ion-row>
+    </div>
+    <div class="city-temp">
+      {{ this.currentCity?.temp | number: '1.0-0' }} °
+    </div>
+    <div class="info-cards">
+      <div class="summary-title">
+        Additional info
+      </div>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <ion-card>
+            Feels like {{ this.currentCity?.feelsLike | number: '1.0-0' }}
+            <b>°C</b>
+          </ion-card>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <ion-card>
+            <i class="mdi mdi-weather-windy"></i> {{ this.currentCity?.wind | number: '1.0-0' }} m/s
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <ion-card>
+            <i class="mdi mdi-thermometer-low"></i> {{ this.currentCity?.minTemp | number: '1.0-0' }}
+            <b>°C</b>
+          </ion-card>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <ion-card>
+            <i class="mdi mdi-thermometer-high"></i> {{ this.currentCity?.maxTemp | number: '1.0-0' }}
+            <b>°C</b>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
   </div>
 </ion-content>

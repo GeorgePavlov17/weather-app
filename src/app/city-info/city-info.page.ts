@@ -46,7 +46,7 @@ export class CityInfoPage implements OnInit {
         minTemp: result.main.temp_min,
         maxTemp: result.main.temp_max,
         wind: result.wind.speed,
-        image: 'https://wallpapercave.com/wp/WSjKlp7.jpg'
+        image: ''
       }
       this.loaded = true;
     });
@@ -56,6 +56,6 @@ export class CityInfoPage implements OnInit {
     if(icon === undefined) {
       return '';
     }
-    return `${this.weatherService.WEATHER_TYPE_ICON_URL}${icon}.png`;
+    return `${this.weatherService.WEATHER_TYPE_ICON_URL}${icon}@2x.png`;
   }  
 }
