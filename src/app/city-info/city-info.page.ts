@@ -12,8 +12,8 @@ export class CityInfoPage implements OnInit {
   @Input() public city!: City;
 
   public currentCity!: { 
-    name: string,
-    country: string,
+    name: string | undefined,
+    country: string | undefined,
     weatherType: string,
     weatherIcon: string,
     temp: number,
@@ -22,7 +22,7 @@ export class CityInfoPage implements OnInit {
     maxTemp: number,
     wind: string,
     image: string
-   };
+   } | undefined;
 
    public loaded: boolean = false;
 
@@ -34,9 +34,8 @@ export class CityInfoPage implements OnInit {
 
   ngOnInit() {
     const cityName = this.activatedRoute.snapshot.params['cityName'];
-    // console.log(this.activatedRoute.snapshot);
+    
     return this.weatherService.getCityData(cityName).then((result) => {
-      // console.log(result);
       this.currentCity = {
         name: result.name,
         country: result.sys.country,
@@ -52,4 +51,11 @@ export class CityInfoPage implements OnInit {
       this.loaded = true;
     });
   }
+
+  weatherTypeIcon(icon: string | undefined) {
+    if(icon === undefined) {
+      return '';
+    }
+    return `${this.weatherService.WEATHER_TYPE_ICON_URL}${icon}.png`;
+  }  
 }

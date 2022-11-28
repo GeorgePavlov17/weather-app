@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ this.currentCity?.name }} - 
+      {{ this.currentCity?.country }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <div class="city-info" *ngIf="loaded">
+    <img [src]="this.currentCity?.image" alt="">
+    <ion-row>
+
+      {{ this.currentCity?.weatherType }}
+      <img style="vertical-align: middle;" [src]="weatherTypeIcon(this.currentCity?.weatherIcon)" alt="">
+      <!-- {{ this.currentCity.weatherIcon }} -->
+    </ion-row>
+  </div>
+</ion-content>
