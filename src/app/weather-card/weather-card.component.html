@@ -1,4 +1,4 @@
-<div class="weather-card">
+<div [routerLink]="['/city-info/' + city.name]" class="weather-card">
   <img class="backdrop" [src]="city.image" alt="">
   <div class="shader"></div>
   <span class="weather-type">

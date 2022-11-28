@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
 import { City } from '../types/City';
 import { ToastController } from '@ionic/angular';
@@ -8,7 +8,7 @@ import { ToastController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements OnInit {
   @ViewChild('searchBox') searchBox!: ElementRef;
 
   public cities: City[] = [];
@@ -62,10 +62,6 @@ export class HomePage implements OnInit, OnDestroy {
 
     });
     this.citiesToShow = this.cities;
-  }
-
-  ngOnDestroy() {
-    this.cities = [];
   }
 
   toggleSearch() {
