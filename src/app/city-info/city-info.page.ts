@@ -58,4 +58,11 @@ export class CityInfoPage implements OnInit {
     }
     return `${this.weatherService.WEATHER_TYPE_ICON_URL}${icon}@2x.png`;
   }  
+
+  temperatureBackground(): boolean {
+    if (this.currentCity) {
+      return this.currentCity.temp > 10;
+    }
+    return false;
+  }
 }

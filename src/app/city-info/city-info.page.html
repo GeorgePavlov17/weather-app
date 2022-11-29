@@ -10,10 +10,11 @@
 </ion-header>
 
 <ion-content fullscreen="true">
-  <div class="city-info" *ngIf="loaded">
+  <div [class.class-background]="temperatureBackground()" class="city-info" *ngIf="loaded">
     <div class="title">
       {{ this.currentCity?.name }} -
       {{ this.currentCity?.country }}
+      <ion-icon name="pin"></ion-icon>
     </div>
     <img *ngIf="this.currentCity?.image !== ''" class="backdrop" [src]="this.currentCity?.image" alt="">
     <div class="weather-type">

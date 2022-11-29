@@ -6,6 +6,10 @@
     overflow: hidden;
     height: 100%;
 
+    &.class-background {
+        background: linear-gradient(rgb(231, 167, 8), rgb(89, 86, 86));
+    }
+
     img.backdrop {
         position: absolute;
         top: 0;
