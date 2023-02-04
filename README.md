@@ -20,4 +20,6 @@ OpenWeather is an online service, owned by OpenWeather Ltd, provides global weat
 
 # **Images**
 
-<img width="200px" src="C:\Users\HP\Desktop\weather app\weather-app\src\assets\images\weatherApp1.jpg" />
+![](images/weatherApp1.jpg)
+
+<!-- <img width="200px" src="C:\Users\HP\Desktop\weather app\weather-app\src\assets\images\weatherApp1.jpg" /> -->
